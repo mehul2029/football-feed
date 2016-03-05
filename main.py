@@ -6,7 +6,9 @@ import sys
 
 #Popup a notification on ubuntu desktop
 def sendmessage(message):
-	subprocess.Popen(['notify-send',message])
+	length = len(message)
+	for i in range(length//124+1):
+		subprocess.Popen(['notify-send',message[(i*124) : (i+1)*124]])
 	return
 
 #Request and parse the given webpage for commentary 
